@@ -4,17 +4,41 @@ import 'package:googleapis/logging/v2.dart';
 class LoggerCloudLoggingImpl implements Logger {
   final LoggingApi loggingApi;
 
+  late final Map<String, String> jsonPayload;
+  late final LogEntry logEntry;
+  late final WriteLogEntriesRequest request;
+
   LoggerCloudLoggingImpl({required this.loggingApi});
 
   @override
   Future<void> log(String description) async {
-    final Map<String, String> params = {'message': description};
-    final logEntry = LogEntry(
+    _prepareLog(description);
+    _writeLog();
+  }
+
+  void _prepareLog(String description) {
+    _prepareJsonPayload(description);
+    _prepareLogData();
+    _prepareRequest();
+  }
+
+  void _prepareJsonPayload(String description) {
+    jsonPayload = {'message': description};
+  }
+
+  void _prepareLogData() {
+    logEntry = LogEntry(
         logName: 'projects/cloud-logging-asac/logs/mylog',
-        jsonPayload: params,
+        jsonPayload: jsonPayload,
         resource: MonitoredResource(type: 'global'),
         labels: {'isWeb': '0'});
-    final req = WriteLogEntriesRequest(entries: [logEntry]);
-    loggingApi.entries.write(req);
+  }
+
+  void _prepareRequest() {
+    request = WriteLogEntriesRequest(entries: [logEntry]);
+  }
+
+  void _writeLog() {
+    loggingApi.entries.write(request);
   }
 }
