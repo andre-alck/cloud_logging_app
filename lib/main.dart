@@ -1,4 +1,5 @@
 import 'package:cloud_logging_app/file_reader/service_account_key_reader_impl.dart';
+import 'package:cloud_logging_app/logger/logger_cloud_logging_impl.dart';
 import 'package:flutter/material.dart';
 import 'package:googleapis/logging/v2.dart';
 import 'package:googleapis_auth/auth_io.dart';
@@ -43,11 +44,18 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final logger = LoggerCloudLoggingImpl(loggingApi: loggingApi);
+
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
+    return Scaffold(
+      body: const Center(
         child: Text('Oi!'),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          logger.log('my new log!');
+        },
       ),
     );
   }
