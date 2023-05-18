@@ -10,6 +10,7 @@ dependencies:
     flutter:
         sdk: flutter
     googleapis: ^11.1.0
+    googleapis_auth: ^1.4.0
 
 dev_dependencies:
     flutter_test:
