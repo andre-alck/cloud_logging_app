@@ -1,4 +1,4 @@
-import 'package:cloud_logging_app/service_account_key_reader_impl.dart';
+import 'package:cloud_logging_app/file_reader/service_account_key_reader_impl.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

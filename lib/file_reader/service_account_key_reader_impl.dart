@@ -1,4 +1,4 @@
-import 'package:cloud_logging_app/file_reader.dart';
+import 'package:cloud_logging_app/file_reader/file_reader.dart';
 import 'package:flutter/services.dart';
 
 class ServiceAccountKeyReaderImpl implements FileReader {
