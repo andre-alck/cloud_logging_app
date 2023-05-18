@@ -1,4 +1,4 @@
-import 'package:cloud_logging_app/service_account_key_reader.dart';
+import 'package:cloud_logging_app/service_account_key_reader_impl.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
@@ -6,7 +6,7 @@ void main() {
       'Dado asset assets/secrets/service_account_key.json Quando verificado sua leitura Entao deve verificar se o conteúdo não está vazio',
       () async {
     TestWidgetsFlutterBinding.ensureInitialized();
-    final reader = ServiceAccountKeyReader();
+    final reader = ServiceAccountKeyReaderImpl();
 
     final conteudoDoArquivo =
         await reader.read('assets/secrets/service_account_key.json');

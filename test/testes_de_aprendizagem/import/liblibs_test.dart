@@ -6,7 +6,6 @@ import 'package:googleapis/logging/v2.dart';
 import 'package:googleapis_auth/auth_io.dart';
 
 void main() {
-  test(
-      'Dado todas bibliotecas necessarias Quando importadas Entao teste deve passar',
+  test('Dado bibliotecas necessarias Quando importadas Entao teste deve passar',
       () {});
 }
